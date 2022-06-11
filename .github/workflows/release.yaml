@@ -9,14 +9,16 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       - name: Checkout
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
       - name: Configure Git
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
@@ -29,9 +31,11 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.2.1
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
       - uses: actions/checkout@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         with:
           ref: gh-pages
 
@@ -46,5 +50,7 @@ jobs:
           /home/runner/go/bin/helm-repo-html
 
       - uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
         with:
           commit_message: "Update index.html"
