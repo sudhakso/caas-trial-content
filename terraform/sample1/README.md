@@ -1,7 +1,38 @@
 # Greenlake for containers examples
 
 
-Lots of Terraform recipes for doing things, aimed for copy and pasting into projects.
+Couple of Terraform recipes for doing things with Greenlake containers.
  
 - [Cluster Examples](#cluster-examples)
-- [Application Examples](#application-deployment-examples)
+
+## Directory layout
+
+- sample1/
+  - Providers.tf
+  - Resources.tf
+  - README.md
+
+- sample2/
+  - Providers.tf
+  - Resources.tf
+  - README.md
+
+# cluster-examples
+
+Following resources and providers are configured and used in this recipie. An existing cluster is used to download a Kubeconfig & deploy an application.
+
+- [cluster/create](cluster/create)
+  - provider hpegl
+  - data hpegl_caas_cluster
+  - resource namespace
+  
+- [cluster/namespace](cluster/namespaces)
+  - provider hpegl
+  - resource hpegl_caas_cluster
+  - resource namespace
+
+# application-deployment-examples
+
+- [cluster/helm](cluster/helm)
+  - provider helm
+  - resource helm-release
