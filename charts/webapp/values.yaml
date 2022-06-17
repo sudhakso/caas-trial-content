@@ -28,7 +28,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext: {
+}
   # capabilities:
   #   drop:
   #   - ALL
@@ -76,3 +77,4 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+host: webapp.istioinaction.io
